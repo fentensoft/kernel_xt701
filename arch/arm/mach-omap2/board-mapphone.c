@@ -163,17 +163,17 @@ char *bp_model = "CDMA";
 static struct omap_opp mapphone_omap3430_mpu_rate_table[] = {
 	{0, 0, 0, 0},
 	/*OPP1*/
-	{S125M, VDD1_OPP1, 0x20, 0x0},
+	{S250M, VDD1_OPP1, 0x1C, 0x0},
 	/*OPP2*/
-	{S250M, VDD1_OPP2, 0x27, 0x0},
+	{S500M, VDD1_OPP2, 0x1F, 0x0},
 	/*OPP3*/
-	{S500M, VDD1_OPP3, 0x32, 0x0},
+	{S600M, VDD1_OPP3, 0x24, 0x0},
 	/*OPP4*/
-	{S550M, VDD1_OPP4, 0x38, 0x0},
+	{S720M, VDD1_OPP4, 0x2C, 0x0},
 	/*OPP5*/
-	{S600M, VDD1_OPP5, 0x3E, 0x0},
+	{S850M, VDD1_OPP5, 0x32, 0x0},
 	/*OPP6*/
-	{S800M, VDD1_OPP6, 0x3E, 0x0},
+	{S1000M, VDD1_OPP6, 0x3A, 0x0},
 };
 
 #define S80M 80000000
@@ -296,15 +296,6 @@ static char *usb_functions_ums[] = {
 
 static char *usb_functions_ums_adb[] = {
 	"usb_mass_storage",
-	"adb",
-};
-
-static char *usb_functions_rndis[] = {
-	"rndis",
-};
-
-static char *usb_functions_rndis_adb[] = {
-	"rndis",
 	"adb",
 };
 
@@ -1431,7 +1422,7 @@ static struct i2c_board_info __initdata
 	},
 #endif
 
-#if CONFIG_KEYBOARD_ADP5588
+#ifdef CONFIG_KEYBOARD_ADP5588
 	{
 		I2C_BOARD_INFO(ADP5588_KEYPAD_NAME, ADP5588_I2C_ADDRESS),
 		.platform_data = &mapphone_adp5588_pdata,
@@ -1532,7 +1523,6 @@ static int initialize_i2c_bus_info
 	char dev_name[I2C_MAX_DEV_NAME_LEN];
 	int device_name_len, i, j;
 	struct i2c_board_info *master_entry;
-	char prop_name[I2C_BUS_PROP_NAME_LEN];
 	static char *i2c_devices[] = {
 			"qtouch-obp-ts,lm3530_led,airc",
 			"akm8973,lis331dlh" ,
@@ -2443,8 +2433,6 @@ static struct platform_device mapphone_vout_device = {
 static void __init mapphone_vout_init(void)
 {
 #ifdef CONFIG_ARM_OF
-	struct device_node *panel_node;
-	const void *panel_prop;
 	struct omap_vout_config *platform_data;
 
 	platform_data = (struct omap_vout_config *)
