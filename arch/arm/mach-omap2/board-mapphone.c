@@ -163,17 +163,17 @@ char *bp_model = "CDMA";
 static struct omap_opp mapphone_omap3430_mpu_rate_table[] = {
 	{0, 0, 0, 0},
 	/*OPP1*/
-	{S250M, VDD1_OPP1, 0x1C, 0x0},
+	{S250M, VDD1_OPP1, 0x1B, 0x0},
 	/*OPP2*/
-	{S500M, VDD1_OPP2, 0x1F, 0x0},
+	{S500M, VDD1_OPP2, 0x22, 0x0},
 	/*OPP3*/
-	{S600M, VDD1_OPP3, 0x24, 0x0},
+	{S600M, VDD1_OPP3, 0x2B, 0x0},
 	/*OPP4*/
-	{S720M, VDD1_OPP4, 0x2C, 0x0},
+	{S720M, VDD1_OPP4, 0x2F, 0x0},
 	/*OPP5*/
-	{S850M, VDD1_OPP5, 0x32, 0x0},
+	{S850M, VDD1_OPP5, 0x36, 0x0},
 	/*OPP6*/
-	{S1000M, VDD1_OPP6, 0x3A, 0x0},
+	{S1000M, VDD1_OPP6, 0x3D, 0x0},
 };
 
 #define S80M 80000000
