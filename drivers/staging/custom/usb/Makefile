@@ -5,6 +5,6 @@
 
 EXTRA_CFLAGS += -DCONFIG_USB_ANDROID_RNDIS_IAD
 
-obj-m += mot_usb.o
+obj-y += mot_usb.o
  
 mot_usb-y := rndis.o f_rndis.o u_ether.o hij_composite.o mapphone.o
